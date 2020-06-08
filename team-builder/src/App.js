@@ -28,8 +28,8 @@ const membersArray = [
 ];
 
 function App() {
-  const [members, setMembers] = useState([membersArray]);
-
+  const [members, setMembers] = useState([]);
+  console.log(members);
   const addNewMember = (form) => {
     const newMember = {
       id: Date.now(),
@@ -48,7 +48,7 @@ function App() {
       </div>
 
       <div className="members-container">
-        {membersArray.map((item) => (
+        {members.map((item) => (
           <div className="member-card" key={item.id}>
             <p>{item.name}</p>
             <p>{item.github}</p>

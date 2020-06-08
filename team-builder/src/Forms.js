@@ -4,7 +4,7 @@ const Form = (props) => {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    gihub: "",
+    github: "",
     role: "",
   });
 
@@ -21,7 +21,7 @@ const Form = (props) => {
     setForm({
       name: "",
       email: "",
-      gihub: "",
+      github: "",
       role: "",
     });
   };
