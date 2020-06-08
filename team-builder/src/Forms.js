@@ -7,13 +7,32 @@ const Form = (props) => {
     gihub: "",
     role: "",
   });
+
+  // this makes it so that whatever the user types in will be saved as values:
+  const handleChanges = (event) => {
+    console.log("event", event.target.value);
+    setForm({ ...form, [event.target.name]: event.target.value });
+  };
+
+  //   this works the submit button:
+  const submitForm = (event) => {
+    event.preventDefault();
+    props.addNewMember(form);
+    setForm({
+      name: "",
+      email: "",
+      gihub: "",
+      role: "",
+    });
+  };
+
   console.log(props);
   return (
-    <form>
+    <form onSubmit={submitForm}>
       <label htmlFor="name">Name</label>
       <input
         id="name"
-        // onChange={handleChanges}
+        onChange={handleChanges}
         type="text"
         placeholder="Enter your name"
         value={form.name}
@@ -23,7 +42,7 @@ const Form = (props) => {
       <label htmlFor="email">Email</label>
       <input
         id="email"
-        // onChange={handleChanges}
+        onChange={handleChanges}
         type="text"
         placeholder="Enter your email"
         value={form.email}
@@ -33,17 +52,17 @@ const Form = (props) => {
       <label htmlFor="github">Github</label>
       <input
         id="github"
-        // onChange={handleChanges}
-        type="text"
+        onChange={handleChanges}
+        type="URL"
         placeholder="Enter your github"
-        value={form.gihub}
+        value={form.github}
         name="github"
       />
 
       <label htmlFor="role">Role</label>
       <input
         id="role"
-        // onChange={handleChanges}
+        onChange={handleChanges}
         type="text"
         placeholder="Enter your role"
         value={form.role}
